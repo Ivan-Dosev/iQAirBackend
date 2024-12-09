@@ -7,8 +7,7 @@ const app = express();
 app.use(cors({
     origin: [
       'http://localhost:3000',
-      'https://*.ngrok-free.app',
-      'https://*.ngrok.io'
+      'https://air.thedrop.top'
     ],
     credentials: true
 }));
