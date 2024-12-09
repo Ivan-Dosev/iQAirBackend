@@ -7,7 +7,8 @@ const app = express();
 app.use(cors({
     origin: [
       'http://localhost:3000',
-      'https://air.thedrop.top:4000'
+      'https://air.thedrop.top:4000',
+      '*'
     ],
     credentials: true
 }));
