@@ -19,6 +19,7 @@ const fetchAirQualityData = async () => {
     console.log('Data fetched at:', lastFetchTime);
   } catch (error) {
     console.error('Error fetching data:', error);
+    // Don't update cachedData if there's an error, keep the old data
   }
 };
 
@@ -28,10 +29,10 @@ setInterval(fetchAirQualityData, 300000);
 fetchAirQualityData();
 
 app.get('/api/air-quality', (req, res) => {
-    try {
+    if (cachedData) {
         res.json(cachedData);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch air quality data' });
+    } else {
+        res.status(404).json({ error: 'No data available' });
     }
 });
 
